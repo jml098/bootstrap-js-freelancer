@@ -12,7 +12,7 @@ function handleSubmit(e) {
   const hours = parseInt(document.getElementById("inputHours").value);
   const discountCode = document.getElementById("inputCode").value;
 
-  let price;
+  let price = 0;
 
   if (!inputType || !hours) {
     alert("Ci sono campi non compilati!");
@@ -21,15 +21,15 @@ function handleSubmit(e) {
 
   switch (inputType) {
     case 1:
-      price = (hours * BACKEND_PRICE).toFixed(2);
+      price = hours * BACKEND_PRICE;
       break;
 
     case 2:
-      price = (hours * FRONTEND_PRICE).toFixed(2);
+      price = hours * FRONTEND_PRICE;
       break;
 
     case 3:
-      price = (hours * ANALYSIS_PRICE).toFixed(2);
+      price = hours * ANALYSIS_PRICE;
       break;
 
     default:
@@ -50,5 +50,5 @@ function handleSubmit(e) {
     document.getElementById("inputCode").classList.remove("text-success");
   }
 
-  document.getElementById("price").innerHTML = price;
+  document.getElementById("price").innerHTML = price.toFixed(2);
 }
